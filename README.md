@@ -45,6 +45,7 @@ export PARLAYAPI_KEY=your_key_here
 - Docs: [parlay-api.com/docs](https://parlay-api.com/docs)
 - Free key (no card): [parlay-api.com/signup](https://parlay-api.com/signup)
 - Plans and historical lookback windows: [parlay-api.com/pricing](https://parlay-api.com/pricing)
+- Discord bot for your server: [parlayapi-discord-bot](https://github.com/JacobiusMakes/parlayapi-discord-bot)
 
 ## License
 
