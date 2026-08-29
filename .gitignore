@@ -1,0 +1,4 @@
+.ipynb_checkpoints/
+parlayapi_odds_snapshot.csv
+__pycache__/
+.venv/
