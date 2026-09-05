@@ -46,6 +46,7 @@ export PARLAYAPI_KEY=your_key_here
 - Free key (no card): [parlay-api.com/signup](https://parlay-api.com/signup)
 - Plans and historical lookback windows: [parlay-api.com/pricing](https://parlay-api.com/pricing)
 - Discord bot for your server: [parlayapi-discord-bot](https://github.com/JacobiusMakes/parlayapi-discord-bot)
+- Runnable starter project using the same no-vig math: [parlayapi-betting-agent-starter](https://github.com/JacobiusMakes/parlayapi-betting-agent-starter), one click in Colab or Codespaces, with a marked extension point for your model
 
 ## License
 
