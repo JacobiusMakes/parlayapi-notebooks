@@ -1,57 +1,86 @@
-# ParlayAPI notebooks: sports betting analytics in Python
+# ParlayAPI notebooks: private sports-data research in Python
 
-Five polished, self-contained Jupyter notebooks for working with live and historical
-sportsbook odds from [ParlayAPI](https://parlay-api.com). Every notebook opens in
-Google Colab with one click, runs top to bottom, and explains its math as it goes.
+Five self-contained notebooks for learning the analysis code before connecting
+an account. Open a notebook in Colab and choose **Run all**: the default `offline`
+mode runs the local mathematical examples without API calls or key prompts.
+Illustrative calculations are not current market observations.
 
-No API key? Every notebook still runs: it falls back to the keyless demo endpoint
-(`/v1/try/...`), which serves the first 5 events per sport, moneyline only, capped
-at 60 requests per hour. A [free API key](https://parlay-api.com/signup) (no card
-required) unlocks all events, all 30+ sportsbooks, and every market.
+| Notebook | Topic | Run in Colab |
+|---|---|---|
+| [01 Quickstart](01-quickstart.ipynb) | Nested event data, a DataFrame, and an optional private CSV | [Open](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/01-quickstart.ipynb) |
+| [02 No-vig and EV](02-no-vig-and-ev.ipynb) | Existing proportional and additive examples and their test cases | [Open](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/02-no-vig-and-ev.ipynb) |
+| [03 Line movement](03-line-movement.ipynb) | Optional polling and a movement chart | [Open](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/03-line-movement.ipynb) |
+| [04 Closing line value](04-closing-line-value.ipynb) | Local grading examples and an optional account archive request | [Open](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/04-closing-line-value.ipynb) |
+| [05 Parlay pricing](05-parlay-pricing.ipynb) | Existing independent-price math and correlation caveats | [Open](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/05-parlay-pricing.ipynb) |
 
-## The notebooks
+## Choose API access explicitly
 
-| # | Notebook | What it teaches | Open |
-|---|----------|-----------------|------|
-| 01 | [Quickstart](01-quickstart.ipynb) | Fetch live odds, flatten them into a tidy pandas DataFrame, shop the best price, save a CSV. | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/01-quickstart.ipynb) |
-| 02 | [No-vig and EV](02-no-vig-and-ev.ipynb) | Strip the bookmaker margin two ways, verify against canonical cases (-110/-110 to +100/+100, 4.76% vig), and score any price's EV against the no-vig fair line. | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/02-no-vig-and-ev.ipynb) |
-| 03 | [Line movement](03-line-movement.ipynb) | Poll the odds feed on an interval, build a movement table, and chart price paths per bookmaker with matplotlib. | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/03-line-movement.ipynb) |
-| 04 | [Closing line value](04-closing-line-value.ipynb) | Grade bet prices against real closing lines from the historical archive (back to 2005), with the devig done properly first. | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/04-closing-line-value.ipynb) |
-| 05 | [Parlay pricing](05-parlay-pricing.ipynb) | Combine legs the way the books do, watch the vig compound, and learn why correlation breaks naive multiplication. | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/05-parlay-pricing.ipynb) |
+The configuration cell has three modes:
 
-The math in these notebooks follows the same conventions as ParlayAPI's browser
-calculators ([no-vig](https://parlay-api.com/tools/no-vig-calculator),
-[parlay](https://parlay-api.com/tools/parlay-calculator),
-[EV](https://parlay-api.com/tools/ev-calculator)), and each notebook asserts the
-canonical cases so drift shows up as a failed cell, not a silent wrong number.
+- `offline`: the default. No network requests, account prompts, polling, or CSV export.
+- `demo`: a limited anonymous sample. Environment keys are ignored. The odds demo
+  returns at most five US moneyline events, with a shared limit of 60 requests per
+  hour per IP. Availability varies; an empty response does not explain missing data.
+- `account`: requests within your own account allowance. A hidden runtime prompt
+  asks for your key when the first account request is made. Never paste a key into
+  a code cell. Existing environment keys do not change the selected mode.
 
-## Running locally
+Use a private notebook copy before selecting `account`. Each reader supplies
+their own [account and key](https://parlay-api.com/signup). Current endpoint
+access, source coverage and allowances are described in the
+[API docs](https://parlay-api.com/docs) and [pricing](https://parlay-api.com/pricing).
+A free account does not promise every event, source, or market.
+
+Additional actions have separate switches, all off by default:
+`RUN_EXTRA_API_CHECKS`, `RUN_POLLING`, and `SAVE_PRIVATE_CSV`.
+The line-movement lesson only polls after `RUN_POLLING` is enabled in a live mode.
+The quickstart writes an optional CSV to a private temporary file outside the
+repository. Its `processed_at` marks local flattening time; `bookmaker_last_update`
+and `market_last_update` preserve source fields separately, including missing values.
+These fields do not establish freshness. The request code uses the fixed HTTPS API origin, does not follow
+redirects, bounds response size and time, and does not retry automatically.
+
+## Keep keys and results out of shared code
+
+Published notebooks have empty outputs and execution counts. Colab's output
+omission setting is enabled as an additional precaution. Other notebook hosts
+may handle this differently; it is not access control or a guarantee that a
+modified notebook cannot save output.
+
+Keep executed account notebooks and CSVs private. Clear every output before
+sharing code or saving a notebook to GitHub. Do not upload API responses, keys,
+or private bet logs. Finish by restarting the runtime; the final cell also drops
+the notebook's stored key reference. Changing modes alone does not erase outputs
+from earlier cells.
+
+The MIT license covers software. API access does not grant public redisplay or
+redistribution rights. Data use follows the [applicable terms](https://parlay-api.com/terms)
+and any written agreement. These defaults do not amend existing customer contracts.
+
+## Local use and checks
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 jupyter lab
 ```
 
-Paste your API key into the config cell at the top of any notebook, or export it
-once as an environment variable:
+Run the offline tests after installing the dependencies:
 
 ```bash
-export PARLAYAPI_KEY=your_key_here
+MPLBACKEND=Agg python -m unittest -v test_notebook_privacy.py
 ```
 
-## Links
+The tests execute every default notebook cell with network and key prompts
+blocked, then separately exercise explicit anonymous and account requests with
+mocked responses and a fake key. They do not contact ParlayAPI.
 
-- API home: [parlay-api.com](https://parlay-api.com)
-- Docs: [parlay-api.com/docs](https://parlay-api.com/docs)
-- Free key (no card): [parlay-api.com/signup](https://parlay-api.com/signup)
-- Plans and historical lookback windows: [parlay-api.com/pricing](https://parlay-api.com/pricing)
-- Discord bot for your server: [parlayapi-discord-bot](https://github.com/JacobiusMakes/parlayapi-discord-bot)
-- Runnable starter project using the same no-vig math: [parlayapi-betting-agent-starter](https://github.com/JacobiusMakes/parlayapi-betting-agent-starter), one click in Colab or Codespaces, with a marked extension point for your model
+For the maintained one-request Python command and response validation, see the
+[parlay-api SDK](https://github.com/JacobiusMakes/parlay-api-python).
+The notebooks retain their existing educational analysis methods; those methods
+are assumptions and examples, not trading recommendations or profit forecasts.
 
-## License
+## Interactive synthetic lab
 
-MIT. The notebooks are for research and education; nothing here is betting advice.
-
----
-
-Part of the [ParlayAPI](https://parlay-api.com) ecosystem: a real-time sports odds API with a free tier of 1,000 credits per month, no card required. Explore all the tools at [github.com/JacobiusMakes](https://github.com/JacobiusMakes).
+The [odds comparability lab](https://github.com/JacobiusMakes/parlayapi-notebooks/tree/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability)
+is a version-pinned lesson. Its synthetic cases explore comparison
+rules and polling budgets without API data or keys. [Open the version-pinned lesson in marimo](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability/odds_comparability.py/wasm?mode=read&show-code=false).

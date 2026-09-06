@@ -2,3 +2,7 @@
 parlayapi_odds_snapshot.csv
 __pycache__/
 .venv/
+.env
+*.csv
+*.parquet
+*.jsonl
