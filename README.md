@@ -79,9 +79,8 @@ For the maintained one-request Python command and response validation, see the
 The notebooks retain their existing educational analysis methods; those methods
 are assumptions and examples, not trading recommendations or profit forecasts.
 
-## Separate synthetic lab under review
+## Interactive synthetic lab
 
 The [odds comparability lab](https://github.com/JacobiusMakes/parlayapi-notebooks/tree/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability)
-is a separate, version-pinned review branch. Its synthetic cases explore comparison
-rules and polling budgets without API data or keys. [Open that reviewed version in marimo](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability/odds_comparability.py/wasm?mode=read&show-code=false).
-It has not been merged into this notebook collection.
+is a version-pinned lesson. Its synthetic cases explore comparison
+rules and polling budgets without API data or keys. [Open the version-pinned lesson in marimo](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability/odds_comparability.py/wasm?mode=read&show-code=false).
