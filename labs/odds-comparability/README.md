@@ -6,6 +6,12 @@ Change a fictional record's market, named outcome, point or settlement rule and 
 
 Use the [15 to 20 minute study guide](lesson-guide.md) for self-study or a facilitated discussion.
 
+## Run in your browser
+
+[Open the interactive lab](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability/odds_comparability.py/wasm).
+
+This version-pinned marimo WebAssembly preview runs without a login or local Python installation. The browser downloads the runtime; your changes in the preview are temporary. The lesson's actual control changes and calculated results were verified in Chrome on September 6, 2026.
+
 ## Run locally
 
 With [uv](https://docs.astral.sh/uv/) installed:
@@ -20,7 +26,7 @@ The notebook declares its pinned runtime dependency using PEP 723 metadata. Alte
 python -m marimo edit odds_comparability.py
 ```
 
-The runtime/package download needs internet access. The lesson's Python code does not. No hosted or WebAssembly compatibility claim is made until those launches are checked.
+The runtime/package download needs internet access. The lesson's Python code does not.
 
 ## Adapt the lesson
 
