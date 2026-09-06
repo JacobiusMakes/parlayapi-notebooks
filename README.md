@@ -35,7 +35,9 @@ Additional actions have separate switches, all off by default:
 `RUN_EXTRA_API_CHECKS`, `RUN_POLLING`, and `SAVE_PRIVATE_CSV`.
 The line-movement lesson only polls after `RUN_POLLING` is enabled in a live mode.
 The quickstart writes an optional CSV to a private temporary file outside the
-repository. The request code uses the fixed HTTPS API origin, does not follow
+repository. Its `processed_at` marks local flattening time; `bookmaker_last_update`
+and `market_last_update` preserve source fields separately, including missing values.
+These fields do not establish freshness. The request code uses the fixed HTTPS API origin, does not follow
 redirects, bounds response size and time, and does not retry automatically.
 
 ## Keep keys and results out of shared code
@@ -76,3 +78,10 @@ For the maintained one-request Python command and response validation, see the
 [parlay-api SDK](https://github.com/JacobiusMakes/parlay-api-python).
 The notebooks retain their existing educational analysis methods; those methods
 are assumptions and examples, not trading recommendations or profit forecasts.
+
+## Separate synthetic lab under review
+
+The [odds comparability lab](https://github.com/JacobiusMakes/parlayapi-notebooks/tree/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability)
+is a separate, version-pinned review branch. Its synthetic cases explore comparison
+rules and polling budgets without API data or keys. [Open that reviewed version in marimo](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability/odds_comparability.py/wasm).
+It has not been merged into this notebook collection.

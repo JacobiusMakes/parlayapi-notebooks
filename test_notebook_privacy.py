@@ -121,6 +121,39 @@ class NotebookPrivacyTests(unittest.TestCase):
                 namespace['request_json']('/v1/sports/baseball_mlb/odds', account=True)
         self.assertEqual(network.call_count, 1)
 
+    def test_quickstart_preserves_source_times_and_labels_processing_time(self):
+        import ast
+        from datetime import datetime, timezone
+        cell = cells(ROOT / '01-quickstart.ipynb')[4]
+        tree = ast.parse(''.join(cell['source']))
+        tree.body = [node for node in tree.body if isinstance(node, ast.FunctionDef)]
+        namespace = {'pd': pd, 'datetime': datetime, 'timezone': timezone}
+        exec(compile(tree, '<flatten-definition>', 'exec'), namespace)
+        # Structural unit fixture only: no real teams, prices, or API observations.
+        source_book = '2026-01-01T00:00:00Z'
+        source_market = 'unparsed-source-marker'
+        events = [
+            {'id': 'unit-present', 'bookmakers': [
+                {'key': 'unit-book', 'last_update': source_book, 'markets': [
+                    {'key': 'h2h', 'last_update': source_market, 'outcomes': [{'name': 'Unit side'}]}]}]},
+            {'id': 'unit-missing', 'bookmakers': [
+                {'key': 'unit-book', 'markets': [{'key': 'h2h', 'outcomes': [{'name': 'Unit side'}]}]}]},
+        ]
+        rows = namespace['flatten'](events)
+        self.assertEqual(rows.iloc[0]['bookmaker_last_update'], source_book)
+        self.assertEqual(rows.iloc[0]['market_last_update'], source_market)
+        self.assertTrue(pd.isna(rows.iloc[1]['bookmaker_last_update']))
+        self.assertTrue(pd.isna(rows.iloc[1]['market_last_update']))
+        self.assertIn('processed_at', rows.columns)
+        self.assertNotIn('fetched_at', rows.columns)
+        self.assertNotEqual(rows.iloc[0]['processed_at'], source_book)
+        import csv
+        exported = list(csv.DictReader(io.StringIO(rows.to_csv(index=False))))
+        self.assertEqual(exported[0]['bookmaker_last_update'], source_book)
+        self.assertEqual(exported[0]['market_last_update'], source_market)
+        self.assertEqual(exported[1]['bookmaker_last_update'], '')
+        self.assertEqual(exported[1]['market_last_update'], '')
+
     def test_published_notebooks_have_no_outputs_or_literal_keys(self):
         import ast
         for path in NOTEBOOKS:
