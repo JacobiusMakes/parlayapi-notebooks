@@ -8,9 +8,11 @@ Use the [15 to 20 minute study guide](lesson-guide.md) for self-study or a facil
 
 ## Run in your browser
 
-[Open the interactive lab](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability/odds_comparability.py/wasm).
+[Open the interactive lab](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability/odds_comparability.py/wasm?mode=read&show-code=false).
 
 This version-pinned marimo WebAssembly preview runs without a login or local Python installation. The browser downloads the runtime; your changes in the preview are temporary. The lesson's actual control changes and calculated results were verified in Chrome on September 6, 2026.
+
+![The synthetic comparability lesson in the verified browser app](preview.png)
 
 ## Run locally
 
