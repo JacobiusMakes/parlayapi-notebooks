@@ -90,6 +90,7 @@ def summarize(payload, *, now=None, player=None, day=None):
     if not isinstance(payload, list):
         raise ValueError("Expected the API props list.")
     groups = defaultdict(list)
+    mismatches = defaultdict(int)
     identities = set()
     for row in payload:
         if not isinstance(row, dict):
@@ -104,12 +105,12 @@ def summarize(payload, *, now=None, player=None, day=None):
                 "Unexpected method settlement semantics for this sportsbook."
             )
         fighter = row.get("player")
-        if (
-            not isinstance(fighter, str)
-            or not fighter
-            or fighter not in (row.get("home_team"), row.get("away_team"))
+        if any(
+            not isinstance(row.get(field), str) or not row[field].strip()
+            for field in ("player", "home_team", "away_team")
         ):
-            raise ValueError("Missing or inconsistent fighter identity.")
+            raise ValueError("Missing fighter or event label.")
+        mismatch = fighter not in (row["home_team"], row["away_team"])
         kickoff = instant(row.get("commence_time"))
         observed = instant(row.get("last_observed"))
         if row.get("last_update_type") != "collector_observation":
@@ -134,11 +135,13 @@ def summarize(payload, *, now=None, player=None, day=None):
         ):
             continue
         groups[(book, method)].append(age)
+        mismatches[(book, method)] += int(mismatch)
     return [
         {
             "bookmaker": book,
             "method": method,
             "selections": len(ages),
+            "fighter_label_mismatches": mismatches[(book, method)],
             "youngest_observation_seconds": round(min(ages), 1),
             "oldest_observation_seconds": round(max(ages), 1),
         }
@@ -201,7 +204,7 @@ def main():
                     if args.demo
                     else "private account request",
                     "coverage": summary,
-                    "note": "Empty counts do not prove a sportsbook has no markets.",
+                    "note": "Empty counts do not prove a sportsbook has no markets. Fighter label mismatches need manual identity checks before comparisons; labels are never normalized or merged.",
                 },
                 indent=2,
             )

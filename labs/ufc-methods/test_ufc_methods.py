@@ -34,13 +34,31 @@ class CoverageTests(unittest.TestCase):
             ("last_observed", "2026-09-09T11:59:00"),
             ("last_observed", "2027-01-01T00:00:00Z"),
             ("commence_time", None),
-            ("player", "Unknown"),
+            ("player", ""),
+            ("player", "  "),
+            ("home_team", None),
             ("game_date", "2020-01-01"),
         ]:
             payload = recipe.demo(NOW)
             payload[0][field] = value
             with self.subTest(field=field, value=value), self.assertRaises(ValueError):
                 recipe.summarize(payload, now=NOW)
+
+    def test_label_mismatches_are_counted_without_alias_guessing(self):
+        for player, home in [
+            ("Edgar Chairez", "Édgar Cháirez"),
+            ("Unrelated Fighter", "Example Fighter A"),
+        ]:
+            payload = recipe.demo(NOW)
+            payload[0]["player"] = player
+            payload[0]["home_team"] = home
+            untouched = copy.deepcopy(payload)
+            summary = recipe.summarize(payload, now=NOW)
+            flagged = next(r for r in summary if r["bookmaker"] == "fanduel")
+            self.assertEqual(flagged["selections"], 1)
+            self.assertEqual(flagged["fighter_label_mismatches"], 1)
+            self.assertEqual(payload, untouched)
+            self.assertEqual(recipe.summarize(payload[:1], now=NOW, player=home), [])
 
     def test_duplicates_and_exact_local_filters(self):
         payload = recipe.demo(NOW)
