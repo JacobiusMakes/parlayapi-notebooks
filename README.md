@@ -13,6 +13,10 @@ Illustrative calculations are not current market observations.
 | [04 Closing line value](04-closing-line-value.ipynb) | Local grading examples and an optional account archive request | [Open](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/04-closing-line-value.ipynb) |
 | [05 Parlay pricing](05-parlay-pricing.ipynb) | Existing independent-price math and correlation caveats | [Open](https://colab.research.google.com/github/JacobiusMakes/parlayapi-notebooks/blob/main/05-parlay-pricing.ipynb) |
 
+## Focused recipes
+
+[UFC method-of-victory coverage](labs/ufc-methods/README.md): a standard-library Python client that checks FanDuel, DraftKings and Novig in one private request. Start with the synthetic demo, then use your own key to see counts and observation ages. KO/TKO and KO/TKO/DQ stay distinct.
+
 ## Choose API access explicitly
 
 The configuration cell has three modes:

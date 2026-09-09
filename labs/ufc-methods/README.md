@@ -58,7 +58,7 @@ curl --fail --silent --show-error --max-time 15 \
   -H "X-API-Key: ${PARLAY_API_KEY}"
 ```
 
-Use the Python script for bounded coverage counts: it caps the body at 2 MiB, uses a 15-second network/read budget, makes no retries or redirects, and refuses a truncated or unconfirmed `x-result-has-more` header. It validates timestamps and fighter identities before reporting counts. It does not paginate, poll, or export results.
+Use the Python script for bounded coverage counts: it caps the body at 2 MiB, uses a 15-second socket timeout and body-read deadline, makes no retries or redirects, and refuses a truncated or unconfirmed `x-result-has-more` header. It validates timestamps and required labels, and reports exact fighter-label disagreements alongside counts. It does not paginate, poll, or export results.
 
 Keep your account responses and executed outputs private. Do not publish live data, screenshots of account results, or keys in shared notebooks, repositories or websites. This is a bring-your-own-key client recipe, not a public odds feed or permission to redistribute data.
 
@@ -67,3 +67,7 @@ Run offline checks:
 ```sh
 python3 -m unittest discover -s labs/ufc-methods -p 'test_*.py'
 ```
+
+### Fighter labels need a separate identity check
+
+`fighter_label_mismatches` counts selections whose exact `player` label differs from both event participant labels. Accents or other display differences can cause this, but an unrelated name is also flagged. These rows remain in the coverage counts and require manual identity checks before comparisons. The client preserves labels, does not strip accents or guess aliases, and does not certify cross-book fighter identity.
