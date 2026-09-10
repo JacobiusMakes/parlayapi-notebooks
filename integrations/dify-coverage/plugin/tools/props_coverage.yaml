@@ -1,0 +1,64 @@
+identity:
+  name: props_coverage
+  author: jacobiusmakes
+  label:
+    en_US: Check prop coverage
+description:
+  human:
+    en_US: Report observed counts, age and incomplete-response warnings. No odds or
+      participant names are returned.
+  llm: Check one bookmaker and prop market using the user own key. Partial results
+    and no observations do not mean a sportsbook lacks a market. Demo is fictional.
+parameters:
+- name: mode
+  type: select
+  required: true
+  default: demo
+  label:
+    en_US: Mode
+  human_description:
+    en_US: Demo uses fictional local data and no network; live uses your key and spends
+      API credits.
+  llm_description: Demo uses fictional local data and no network; live uses your key
+    and spends API credits.
+  form: form
+  options:
+  - value: demo
+    label:
+      en_US: Demo
+  - value: live
+    label:
+      en_US: Live
+- name: sport
+  type: string
+  required: true
+  default: mma_mixed_martial_arts
+  label:
+    en_US: Sport
+  human_description:
+    en_US: Single API sport key.
+  llm_description: Single API sport key.
+  form: llm
+- name: bookmaker
+  type: string
+  required: true
+  default: fanduel
+  label:
+    en_US: Bookmaker
+  human_description:
+    en_US: Single bookmaker API key, not a display name.
+  llm_description: Single bookmaker API key, not a display name.
+  form: llm
+- name: market
+  type: string
+  required: true
+  default: method_of_victory
+  label:
+    en_US: Market
+  human_description:
+    en_US: Single exact prop market key or method_of_victory family.
+  llm_description: Single exact prop market key or method_of_victory family.
+  form: llm
+extra:
+  python:
+    source: tools/props_coverage.py
