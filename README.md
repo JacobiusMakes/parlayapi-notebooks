@@ -19,6 +19,8 @@ Illustrative calculations are not current market observations.
 
 [Experimental Dify coverage tool](integrations/dify-coverage/README.md): run a fictional example through the Dify SDK, then develop a private own-key coverage diagnostic. Local SDK tests only; Dify installation and Marketplace publication remain unverified.
 
+[Private Prefect coverage flow](integrations/prefect/README.md): a synthetic-first, one-shot UFC diagnostic with aggregate-only task results, no caching and an explicit own-key live option. Tested with the local Prefect runtime.
+
 ## Choose API access explicitly
 
 The configuration cell has three modes:
