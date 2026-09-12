@@ -21,6 +21,8 @@ Illustrative calculations are not current market observations.
 
 [Private Prefect coverage flow](integrations/prefect/README.md): a synthetic-first, one-shot UFC diagnostic with aggregate-only task results, no caching and an explicit own-key live option. Tested with the local Prefect runtime.
 
+[Private Mastra moneyline check](integrations/mastra-coverage/README.md): a two-step workflow that refuses incomplete soccer outcome sets before private analysis. Start with fictional presence metadata, then optionally make one own-key request. Tested with the local Mastra runtime.
+
 ## Choose API access explicitly
 
 The configuration cell has three modes:

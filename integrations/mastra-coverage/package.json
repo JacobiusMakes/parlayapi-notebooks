@@ -1,0 +1,17 @@
+{
+  "name": "parlayapi-mastra-coverage",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "demo": "node run.mjs",
+    "live": "node run.mjs --live",
+    "test": "node --test --test-concurrency=1"
+  },
+  "dependencies": {
+    "@mastra/core": "1.66.0",
+    "zod": "4.3.6"
+  }
+}
