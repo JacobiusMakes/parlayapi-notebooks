@@ -23,6 +23,8 @@ Illustrative calculations are not current market observations.
 
 [Private Mastra moneyline check](integrations/mastra-coverage/README.md): a two-step workflow that refuses incomplete soccer outcome sets before private analysis. Start with fictional presence metadata, then optionally make one own-key request. Tested with the local Mastra runtime.
 
+[PydanticAI sport metadata report](integrations/pydanticai-coverage/README.md): typed event-count observations that preserve missing and unknown data, with a validated agent tool and an explicit public MCP metadata option. No API or model calls by default.
+
 ## Choose API access explicitly
 
 The configuration cell has three modes:
