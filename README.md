@@ -95,6 +95,8 @@ are assumptions and examples, not trading recommendations or profit forecasts.
 
 ## Interactive synthetic lab
 
+Read [A valid schema can still describe the wrong comparison](labs/odds-comparability/data-contracts.md), a practical article on semantic matching, source timestamps and preserving unresolved candidates, with fictional examples and runnable code.
+
 The [odds comparability lab](https://github.com/JacobiusMakes/parlayapi-notebooks/tree/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability)
 is a version-pinned lesson. Its synthetic cases explore comparison
 rules and polling budgets without API data or keys. [Open the version-pinned lesson in marimo](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/774d5f347e0d9d36e43d392941efacaf8a7260d3/labs/odds-comparability/odds_comparability.py/wasm?mode=read&show-code=false).
