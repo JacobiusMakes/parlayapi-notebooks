@@ -25,6 +25,8 @@ Illustrative calculations are not current market observations.
 
 [PydanticAI sport metadata report](integrations/pydanticai-coverage/README.md): typed event-count observations that preserve missing and unknown data, with a validated agent tool and an explicit public MCP metadata option. No API or model calls by default.
 
+[Hamilton odds comparability dataflow](integrations/hamilton-comparability/README.md): run the existing fictional comparison rules as an explicit Python dataflow. Missing outcomes, ambiguous matches, different settlement rules and stale source timestamps remain visible in the result. No account or network access is needed.
+
 ## Choose API access explicitly
 
 The configuration cell has three modes:
