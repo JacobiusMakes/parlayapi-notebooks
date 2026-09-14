@@ -1,0 +1,376 @@
+{
+  "dataset_name": "Odds Reality Check",
+  "dataset_version": "0.1.0",
+  "synthetic_only": true,
+  "notice": "All fixtures, books, athletes, events, clocks and contracts are fictional. No API calls, real sportsbook data, customer records, model results, profit claims or coverage certification. This is an open educational challenge, not a held-out scientific benchmark or vendor ranking.",
+  "instructions": "For each claim, choose supported when the supplied evidence establishes it, contradicted when supplied evidence establishes its opposite, or insufficient_evidence when neither is established. Use only the explicit synthetic contract. Do not infer actual API or sportsbook guarantees. Questions are independent.",
+  "allowed_labels": [
+    "supported",
+    "contradicted",
+    "insufficient_evidence"
+  ],
+  "questions": [
+    {
+      "id": "ORC-01",
+      "title": "An empty partial page",
+      "claim": "Quote q-17 is inactive at revision 102.",
+      "evidence": {
+        "contract": "Synthetic contract only: a complete snapshot authoritatively replaces all active quote IDs within exactly its declared scope at its source revision. A partial snapshot makes no statement about omitted IDs. Higher source revision wins regardless of arrival order. Snapshots attest only their own source revision. An omitted ID in a later partial snapshot has unknown current activity; do not carry earlier activity forward as proof. All captured observations are supplied, but their source coverage may be incomplete. Active means active in this synthetic contract state, not any real sportsbook.",
+        "previous": {
+          "scope": {
+            "book": "Fictional Book A",
+            "event": "fictional-event-001",
+            "market": "spread"
+          },
+          "source_revision": 101,
+          "complete": true,
+          "active_quote_ids": [
+            "q-17"
+          ]
+        },
+        "next": {
+          "scope": {
+            "book": "Fictional Book A",
+            "event": "fictional-event-001",
+            "market": "spread"
+          },
+          "source_revision": 102,
+          "complete": false,
+          "active_quote_ids": []
+        }
+      }
+    },
+    {
+      "id": "ORC-02",
+      "title": "A complete replacement",
+      "claim": "Quote q-17 is inactive in the local contract state at revision 102.",
+      "evidence": {
+        "contract": "Synthetic contract only: a complete snapshot authoritatively replaces all active quote IDs within exactly its declared scope at its source revision. A partial snapshot makes no statement about omitted IDs. Higher source revision wins regardless of arrival order. Snapshots attest only their own source revision. An omitted ID in a later partial snapshot has unknown current activity; do not carry earlier activity forward as proof. All captured observations are supplied, but their source coverage may be incomplete. Active means active in this synthetic contract state, not any real sportsbook.",
+        "previous": {
+          "scope": {
+            "book": "Fictional Book A",
+            "event": "fictional-event-001",
+            "market": "spread"
+          },
+          "source_revision": 101,
+          "complete": true,
+          "active_quote_ids": [
+            "q-17"
+          ]
+        },
+        "next": {
+          "scope": {
+            "book": "Fictional Book A",
+            "event": "fictional-event-001",
+            "market": "spread"
+          },
+          "source_revision": 102,
+          "complete": true,
+          "active_quote_ids": []
+        }
+      }
+    },
+    {
+      "id": "ORC-03",
+      "title": "A late removal",
+      "claim": "After both arrivals, q-17 is inactive because the removal arrived last.",
+      "evidence": {
+        "contract": "Synthetic event contract: quote q-17 starts inactive at revision 200. restore sets it active and remove sets it inactive. The greatest source revision determines current state; arrival order has no authority. All events through revision 202 are provided.",
+        "events": [
+          {
+            "operation": "restore",
+            "source_revision": 202,
+            "arrival": 1
+          },
+          {
+            "operation": "remove",
+            "source_revision": 201,
+            "arrival": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "ORC-04",
+      "title": "The heartbeat looks fresh",
+      "claim": "Quote q-17 was verified by its source within the last two minutes.",
+      "evidence": {
+        "fictional_now_minute": 720,
+        "book": "Fictional Book A",
+        "book_heartbeat_minute": 720,
+        "quote": {
+          "id": "q-17",
+          "retrieved_minute": 720,
+          "source_minute": null
+        },
+        "contract": "A book heartbeat only confirms its process is running. It does not certify any quote's age."
+      }
+    },
+    {
+      "id": "ORC-05",
+      "title": "Same teams, second game",
+      "claim": "These two records refer to the same event.",
+      "evidence": {
+        "record_a": {
+          "event": "North vs South, doubleheader game 1",
+          "market": "spread",
+          "outcome": "North",
+          "point": -3.5,
+          "period": "full game",
+          "settlement": "includes overtime",
+          "price": -110,
+          "source_minute": 719,
+          "retrieved_minute": 720
+        },
+        "candidates_b": [
+          {
+            "event": "North vs South, doubleheader game 2",
+            "market": "spread",
+            "outcome": "North",
+            "point": -3.5,
+            "period": "full game",
+            "settlement": "includes overtime",
+            "price": -105,
+            "source_minute": 719,
+            "retrieved_minute": 720
+          }
+        ],
+        "now_minute": 720,
+        "maximum_age_minutes": 5,
+        "maximum_source_gap_minutes": 2,
+        "contract": "Use the existing odds-comparability teaching lab checks: event, market, named outcome, line for spread/total, period, settlement, valid American prices, source age and source-time gap. All required fields must be supplied. Passing these checks is only comparability under this toy contract.",
+        "context": "Fictional MLB-style doubleheader; these are not real MLB teams, fixtures or records."
+      }
+    },
+    {
+      "id": "ORC-06",
+      "title": "A home-run alternate",
+      "claim": "The over 0.5 and over 1.5 home-run records are the same betting contract.",
+      "evidence": {
+        "record_a": {
+          "event": "North vs South, game A",
+          "market": "total",
+          "outcome": "Fictional Batter A home runs over",
+          "point": 0.5,
+          "period": "full game",
+          "settlement": "all plate appearances in the declared game",
+          "price": -110,
+          "source_minute": 719,
+          "retrieved_minute": 720
+        },
+        "candidates_b": [
+          {
+            "event": "North vs South, game A",
+            "market": "total",
+            "outcome": "Fictional Batter A home runs over",
+            "point": 1.5,
+            "period": "full game",
+            "settlement": "all plate appearances in the declared game",
+            "price": -105,
+            "source_minute": 719,
+            "retrieved_minute": 720
+          }
+        ],
+        "now_minute": 720,
+        "maximum_age_minutes": 5,
+        "maximum_source_gap_minutes": 2,
+        "contract": "Use the existing odds-comparability teaching lab checks: event, market, named outcome, line for spread/total, period, settlement, valid American prices, source age and source-time gap. All required fields must be supplied. Passing these checks is only comparability under this toy contract."
+      }
+    },
+    {
+      "id": "ORC-07",
+      "title": "A different period",
+      "claim": "The two records cover the same period.",
+      "evidence": {
+        "record_a": {
+          "event": "North vs South, game A",
+          "market": "spread",
+          "outcome": "North",
+          "point": -3.5,
+          "period": "full game",
+          "settlement": "includes overtime",
+          "price": -110,
+          "source_minute": 719,
+          "retrieved_minute": 720
+        },
+        "candidates_b": [
+          {
+            "event": "North vs South, game A",
+            "market": "spread",
+            "outcome": "North",
+            "point": -3.5,
+            "period": "first half",
+            "settlement": "includes overtime",
+            "price": -105,
+            "source_minute": 719,
+            "retrieved_minute": 720
+          }
+        ],
+        "now_minute": 720,
+        "maximum_age_minutes": 5,
+        "maximum_source_gap_minutes": 2,
+        "contract": "Use the existing odds-comparability teaching lab checks: event, market, named outcome, line for spread/total, period, settlement, valid American prices, source age and source-time gap. All required fields must be supplied. Passing these checks is only comparability under this toy contract."
+      }
+    },
+    {
+      "id": "ORC-08",
+      "title": "An unstated settlement rule",
+      "claim": "These two records have matching settlement rules.",
+      "evidence": {
+        "record_a": {
+          "event": "North vs South, game A",
+          "market": "spread",
+          "outcome": "North",
+          "point": -3.5,
+          "period": "full game",
+          "settlement": "includes overtime",
+          "price": -110,
+          "source_minute": 719,
+          "retrieved_minute": 720
+        },
+        "candidates_b": [
+          {
+            "event": "North vs South, game A",
+            "market": "spread",
+            "outcome": "North",
+            "point": -3.5,
+            "period": "full game",
+            "settlement": null,
+            "price": -105,
+            "source_minute": 719,
+            "retrieved_minute": 720
+          }
+        ],
+        "now_minute": 720,
+        "maximum_age_minutes": 5,
+        "maximum_source_gap_minutes": 2,
+        "contract": "Use the existing odds-comparability teaching lab checks: event, market, named outcome, line for spread/total, period, settlement, valid American prices, source age and source-time gap. All required fields must be supplied. Passing these checks is only comparability under this toy contract."
+      }
+    },
+    {
+      "id": "ORC-09",
+      "title": "Fetched now, source time absent",
+      "claim": "Both records satisfy the five-minute source-age limit.",
+      "evidence": {
+        "record_a": {
+          "event": "North vs South, game A",
+          "market": "spread",
+          "outcome": "North",
+          "point": -3.5,
+          "period": "full game",
+          "settlement": "includes overtime",
+          "price": -110,
+          "source_minute": 719,
+          "retrieved_minute": 720
+        },
+        "candidates_b": [
+          {
+            "event": "North vs South, game A",
+            "market": "spread",
+            "outcome": "North",
+            "point": -3.5,
+            "period": "full game",
+            "settlement": "includes overtime",
+            "price": -105,
+            "source_minute": null,
+            "retrieved_minute": 720
+          }
+        ],
+        "now_minute": 720,
+        "maximum_age_minutes": 5,
+        "maximum_source_gap_minutes": 2,
+        "contract": "Use the existing odds-comparability teaching lab checks: event, market, named outcome, line for spread/total, period, settlement, valid American prices, source age and source-time gap. All required fields must be supplied. Passing these checks is only comparability under this toy contract."
+      }
+    },
+    {
+      "id": "ORC-10",
+      "title": "Matching declared contracts",
+      "claim": "These records pass all supplied toy comparability checks.",
+      "evidence": {
+        "record_a": {
+          "event": "North vs South, game A",
+          "market": "spread",
+          "outcome": "North",
+          "point": -3.5,
+          "period": "full game",
+          "settlement": "includes overtime",
+          "price": -110,
+          "source_minute": 719,
+          "retrieved_minute": 720
+        },
+        "candidates_b": [
+          {
+            "event": "North vs South, game A",
+            "market": "spread",
+            "outcome": "North",
+            "point": -3.5,
+            "period": "full game",
+            "settlement": "includes overtime",
+            "price": -105,
+            "source_minute": 719,
+            "retrieved_minute": 720
+          }
+        ],
+        "now_minute": 720,
+        "maximum_age_minutes": 5,
+        "maximum_source_gap_minutes": 2,
+        "contract": "Use the existing odds-comparability teaching lab checks: event, market, named outcome, line for spread/total, period, settlement, valid American prices, source age and source-time gap. All required fields must be supplied. Passing these checks is only comparability under this toy contract."
+      }
+    },
+    {
+      "id": "ORC-11",
+      "title": "At the inclusive limits",
+      "claim": "Both records satisfy the five-minute age and two-minute source-gap limits.",
+      "evidence": {
+        "record_a": {
+          "event": "North vs South, game A",
+          "market": "spread",
+          "outcome": "North",
+          "point": -3.5,
+          "period": "full game",
+          "settlement": "includes overtime",
+          "price": -110,
+          "source_minute": 715,
+          "retrieved_minute": 720
+        },
+        "candidates_b": [
+          {
+            "event": "North vs South, game A",
+            "market": "spread",
+            "outcome": "North",
+            "point": -3.5,
+            "period": "full game",
+            "settlement": "includes overtime",
+            "price": -105,
+            "source_minute": 717,
+            "retrieved_minute": 720
+          }
+        ],
+        "now_minute": 720,
+        "maximum_age_minutes": 5,
+        "maximum_source_gap_minutes": 2,
+        "contract": "Use the existing odds-comparability teaching lab checks: event, market, named outcome, line for spread/total, period, settlement, valid American prices, source age and source-time gap. All required fields must be supplied. Passing these checks is only comparability under this toy contract."
+      }
+    },
+    {
+      "id": "ORC-12",
+      "title": "The source order restores activity",
+      "claim": "After both arrivals, q-17 is active in the local contract state.",
+      "evidence": {
+        "contract": "Synthetic event contract: quote q-17 starts inactive at revision 200. restore sets it active and remove sets it inactive. The greatest source revision determines current state; arrival order has no authority. All events through revision 202 are provided.",
+        "events": [
+          {
+            "operation": "restore",
+            "source_revision": 202,
+            "arrival": 1
+          },
+          {
+            "operation": "remove",
+            "source_revision": 201,
+            "arrival": 2
+          }
+        ]
+      }
+    }
+  ]
+}
