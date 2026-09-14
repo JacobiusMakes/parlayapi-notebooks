@@ -93,6 +93,12 @@ For the maintained one-request Python command and response validation, see the
 The notebooks retain their existing educational analysis methods; those methods
 are assumptions and examples, not trading recommendations or profit forecasts.
 
+## Odds Reality Check
+
+[Try the twelve-case evidence challenge](labs/odds-reality-check/README.md): test whether a betting-data claim is supported, contradicted, or still unknown. Fictional records, a separate answer key and a local scorer; no account or model calls required. This educational challenge is not a commercial-model ranking or a production certification.
+
+[Media brief](press/odds-reality-check.md).
+
 ## Interactive synthetic lab
 
 Read [A valid schema can still describe the wrong comparison](labs/odds-comparability/data-contracts.md), a practical article on semantic matching, source timestamps and preserving unresolved candidates, with fictional examples and runnable code.

@@ -1,0 +1,65 @@
+{
+  "dataset_version": "0.1.0",
+  "answers": [
+    {
+      "id": "ORC-01",
+      "label": "insufficient_evidence",
+      "explanation": "The newer page is partial. Its omission neither proves withdrawal nor current activity."
+    },
+    {
+      "id": "ORC-02",
+      "label": "supported",
+      "explanation": "Only the explicit complete, newer, same-scope replacement contract establishes this local absence. This is no claim about an actual API's withdrawal semantics."
+    },
+    {
+      "id": "ORC-03",
+      "label": "contradicted",
+      "explanation": "Restore revision 202 wins over removal revision 201. Arrival order cannot overrule the newer source state."
+    },
+    {
+      "id": "ORC-04",
+      "label": "insufficient_evidence",
+      "explanation": "A book heartbeat and retrieval clock do not supply a per-quote source verification time."
+    },
+    {
+      "id": "ORC-05",
+      "label": "contradicted",
+      "explanation": "The same fictional teams play two games. Explicit game 1 and game 2 identities differ."
+    },
+    {
+      "id": "ORC-06",
+      "label": "contradicted",
+      "explanation": "Over 0.5 and over 1.5 require different home-run counts. An alternate line is not the standard line."
+    },
+    {
+      "id": "ORC-07",
+      "label": "contradicted",
+      "explanation": "Full game and first half are explicitly different periods."
+    },
+    {
+      "id": "ORC-08",
+      "label": "insufficient_evidence",
+      "explanation": "One settlement rule is null. Missing information cannot establish either agreement or a known disagreement."
+    },
+    {
+      "id": "ORC-09",
+      "label": "insufficient_evidence",
+      "explanation": "Record B lacks a source timestamp. Its current retrieval timestamp cannot establish source age."
+    },
+    {
+      "id": "ORC-10",
+      "label": "supported",
+      "explanation": "All required contract fields match, both prices are valid, and supplied source ages and gap meet the stated limits. This does not establish profit or execution availability."
+    },
+    {
+      "id": "ORC-11",
+      "label": "supported",
+      "explanation": "At minute 720, source ages are 5 and 3 minutes, and the gap is 2 minutes. The teaching lab accepts equality at both limits."
+    },
+    {
+      "id": "ORC-12",
+      "label": "supported",
+      "explanation": "Source revision 202 is the greatest supplied revision and explicitly restores q-17. The late older removal cannot change that state."
+    }
+  ]
+}

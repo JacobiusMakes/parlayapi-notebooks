@@ -1,0 +1,51 @@
+{
+  "baseline": "always-supported",
+  "notice": "Explicit synthetic constant-label baseline. No AI or external model was run.",
+  "grade": {
+    "dataset_version": "0.1.0",
+    "dataset_sha256": "e17a7de0849200f57a105ecd2f70a6255e1e697e7cfe12b31cff17412a1b7401",
+    "answer_key_sha256": "3798fbd3ee3e1d187e7df972a0f5321127f1492345d3308859da9e8283bed96f",
+    "synthetic_only": true,
+    "total": 12,
+    "answered": 12,
+    "missing": 0,
+    "correct": 4,
+    "score": 0.3333333333333333,
+    "exact_score": "4/12",
+    "macro_average_recall": 0.3333333333333333,
+    "macro_average_exact": "1/3",
+    "per_class": {
+      "supported": {
+        "correct": 4,
+        "total": 4,
+        "recall": 1.0,
+        "exact": "4/4"
+      },
+      "contradicted": {
+        "correct": 0,
+        "total": 4,
+        "recall": 0.0,
+        "exact": "0/4"
+      },
+      "insufficient_evidence": {
+        "correct": 0,
+        "total": 4,
+        "recall": 0.0,
+        "exact": "0/4"
+      }
+    },
+    "false_supported_claim_count": 8,
+    "missing_ids": [],
+    "incorrect_ids": [
+      "ORC-01",
+      "ORC-03",
+      "ORC-04",
+      "ORC-05",
+      "ORC-06",
+      "ORC-07",
+      "ORC-08",
+      "ORC-09"
+    ],
+    "interpretation": "Closed synthetic exercise, not model, profit, coverage or production certification."
+  }
+}
