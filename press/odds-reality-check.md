@@ -2,7 +2,7 @@
 
 A betting-data answer can look convincing while referring to the wrong game, a different market, or a quote whose status is unknown.
 
-**Odds Reality Check** is an open, fictional challenge from the ParlayAPI team. Its twelve cases ask whether a specific claim is supported, contradicted, or not established by the supplied evidence. A local scorer lets developers and readers inspect mistakes rather than relying on a persuasive explanation.
+**Odds Reality Check** is an open, fictional challenge from the ParlayAPI team. Its twelve cases ask whether a specific claim is supported, contradicted, or not established by the supplied evidence. A browser exercise and local scorer let developers and readers inspect mistakes and reveal explanations.
 
 [Get the challenge and scoring instructions](../labs/odds-reality-check/README.md).
 
@@ -22,6 +22,7 @@ Three possible editorial angles:
 
 - Twelve fictional cases with an explicit claim and the evidence needed to evaluate it.
 - A separate answer key with reasons, so readers can challenge the interpretation.
+- A browser quiz with twelve evidence cards, explicit scoring, explanations and a downloadable result.
 - A local Python scoring tool and an answer template.
 - Scores that include class-level results and unsupported positive claims, with missing answers accounted for.
 - Explicitly synthetic baseline submissions that illustrate the scoring method.

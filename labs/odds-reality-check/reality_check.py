@@ -51,6 +51,11 @@ def identity():
 
 def grade(submission):
     questions, answers = dataset()
+    return grade_payload(submission, questions, answers, identity())
+
+
+def grade_payload(submission, questions, answers, digests):
+    """Pure scoring core shared by the CLI and generated offline notebook."""
     if not isinstance(submission, dict) or set(submission) != {"dataset_version", "responses"}:
         raise ValueError("Submission requires exactly dataset_version and responses")
     if submission["dataset_version"] != questions["dataset_version"]:
@@ -78,7 +83,7 @@ def grade(submission):
                             "recall": hits / len(members), "exact": f"{hits}/{len(members)}"}
     macro = sum(Fraction(row["correct"], row["total"]) for row in per_class.values()) / len(LABELS)
     return {
-        "dataset_version": questions["dataset_version"], **identity(),
+        "dataset_version": questions["dataset_version"], **digests,
         "synthetic_only": True, "total": len(answers), "answered": len(predictions),
         "missing": len(answers) - len(predictions), "correct": correct,
         "score": correct / len(answers), "exact_score": f"{correct}/{len(answers)}",

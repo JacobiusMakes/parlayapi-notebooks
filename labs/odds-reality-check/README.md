@@ -6,6 +6,20 @@ Twelve tiny cases. Three possible answers. A fresh heartbeat, a disappearing quo
 
 This is an **open educational challenge**, not a held-out scientific benchmark, model ranking or coverage certification. Every fixture, sportsbook, athlete, event, clock and contract is fictional. No real sportsbook feed, customer data, API key or model call is involved. Nothing here estimates betting profit or recommends a bet.
 
+## Play in your browser
+
+[Open the interactive Odds Reality Check](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/e45ebc93c1e3f7decad49de119e9758da6b78a16/labs/odds-reality-check/play.py/wasm?mode=read&show-code=false).
+
+Open each of the twelve case cards, read its evidence and choose **Supported**, **Contradicted** or **Insufficient evidence**. Click **Score and reveal answers** below the cards to see your score out of twelve, the explanation for each case and a downloadable result. Answers are initially unselected; missing answers count against the complete denominator. The last submitted result stays visible while you edit, until you submit again. The answer key is then visible, so subsequent attempts are practice.
+
+The marimo WebAssembly preview downloads its runtime, then runs this notebook in your browser. It needs no API key or local Python installation. The notebook does not make network calls or send answers to ParlayAPI. The public source includes the answer key, so this is an educational exercise rather than a concealed test.
+
+For local interactive play using an existing Python 3.12+ environment with `marimo==0.24.0`:
+
+```sh
+python3 -m marimo run labs/odds-reality-check/play.py
+```
+
 ## Try it
 
 Requires Python 3.10+ and its standard library. From the repository root:
@@ -64,7 +78,7 @@ python3 labs/odds-reality-check/reality_check.py grade labs/odds-reality-check/b
 
 The exercise separates event identity from team names in a fictional MLB-style doubleheader, standard from alternate home-run thresholds, and full-game from partial-game periods. It also separates retrieval time, process heartbeats and quote source time. The snapshot cases deliberately declare their own replacement and ordering contract; they do **not** document ParlayAPI or any sportsbook's behavior. The late removal cases use source revision, not arrival order. Positive controls ensure that the correct response is sometimes a supported claim.
 
-The twelve hand-authored cases are small, visible and intentionally related. Two share the same event sequence with opposite claims; snapshot cases differ primarily in completeness. They are useful for teaching and inspecting a reasoning failure, but do not represent independent samples of real-world reliability. Scores cannot establish a provider's coverage, latency, settlement accuracy or an assistant's general competence.
+The twelve authored cases are small, visible and intentionally related. Two share the same event sequence with opposite claims; snapshot cases differ primarily in completeness. They are useful for teaching and inspecting a reasoning failure, but do not represent independent samples of real-world reliability. Scores cannot establish a provider's coverage, latency, settlement accuracy or an assistant's general competence.
 
 ## Reuse, provenance and checks
 
@@ -85,5 +99,19 @@ python3 labs/odds-reality-check/build_dataset.py
 ```
 
 Changing question bytes changes the reported dataset hash. Version any published semantic change and regenerate baseline results. An open answer key can change independently, so preserve both hashes with any shared score.
+
+### Browser artifact maintenance
+
+The standalone [play.py](play.py) embeds the exact bytes of `questions.json` and `answer-key.json`, checks their SHA-256 hashes, and uses the same pure `grade_payload` function as the CLI. It does not depend on fetching sibling files in WebAssembly. [build_play_notebook.py](build_play_notebook.py) generates it from [play_template.py.txt](play_template.py.txt), those authoritative fixtures and the scorer source. Edit those inputs, then regenerate; do not hand-edit the generated notebook.
+
+```sh
+python3 labs/odds-reality-check/build_play_notebook.py
+python3 -m unittest discover -s labs/odds-reality-check -p 'test_*.py' -v
+# Existing Python 3.12+ / marimo 0.24.0 environment:
+python3 -m marimo check labs/odds-reality-check/play.py
+python3 labs/odds-reality-check/reference_play.py
+```
+
+The optional execution tests run the actual notebook with socket connections and DNS resolution blocked. They check the unsubmitted state and score parity for complete, partial, empty and constant-label submissions. Browser rendering and interaction should also be checked before publishing a new preview.
 
 Prepared by Astra, an AI assistant working with the ParlayAPI team. Review, adapt and share the synthetic exercise under the repository's MIT license. That license grants no rights to redistribute provider data. Builders seeking real data can inspect [ParlayAPI](https://parlay-api.com/) and verify their exact requirements separately.
