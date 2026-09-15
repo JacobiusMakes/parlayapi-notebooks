@@ -95,7 +95,7 @@ are assumptions and examples, not trading recommendations or profit forecasts.
 
 ## Odds Reality Check
 
-[Try the twelve-case evidence challenge](labs/odds-reality-check/README.md): test whether a betting-data claim is supported, contradicted, or still unknown. Fictional records, a separate answer key and a local scorer; no account or model calls required. This educational challenge is not a commercial-model ranking or a production certification.
+[Try the twelve-case evidence challenge](labs/odds-reality-check/README.md): test whether a betting-data claim is supported, contradicted, or still unknown. Play in the browser or use the local scorer. Fictional records, explained answers and no account or model calls required. This educational challenge is not a commercial-model ranking or a production certification.
 
 [Media brief](press/odds-reality-check.md).
 
