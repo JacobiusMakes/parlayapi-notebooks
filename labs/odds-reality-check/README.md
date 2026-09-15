@@ -8,7 +8,7 @@ This is an **open educational challenge**, not a held-out scientific benchmark, 
 
 ## Play in your browser
 
-[Open the interactive Odds Reality Check](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/main/labs/odds-reality-check/play.py/wasm?mode=read&show-code=false).
+[Open the interactive Odds Reality Check](https://molab.marimo.io/github/JacobiusMakes/parlayapi-notebooks/blob/e45ebc93c1e3f7decad49de119e9758da6b78a16/labs/odds-reality-check/play.py/wasm?mode=read&show-code=false).
 
 Open each of the twelve case cards, read its evidence and choose **Supported**, **Contradicted** or **Insufficient evidence**. Click **Score and reveal answers** below the cards to see your score out of twelve, the explanation for each case and a downloadable result. Answers are initially unselected; missing answers count against the complete denominator. The last submitted result stays visible while you edit, until you submit again. The answer key is then visible, so subsequent attempts are practice.
 

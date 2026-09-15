@@ -25,3 +25,5 @@ The standard-library tests cover a fully correct submission, a fully wrong submi
 - `marimo check play.py` reported no issues using the existing marimo 0.24.0 runtime.
 - Dataset question/key bytes and version remain unchanged. Existing synthetic baseline result files still match the CLI grader.
 - No package installation, model/API call, production action or publication was performed for this implementation. Browser rendering/interaction verification is a separate publishing check.
+
+Root browser verification (2026-09-15): actual local marimo app in headless Chrome, twelve visible case cards, initially unselected answers, empty submission0/12, unchanged result while editing, answer-key submission12/12, and downloaded JSON all passed. No browser JavaScript errors. Inspected390px phone layout. This local check does not establish molab runtime availability.
