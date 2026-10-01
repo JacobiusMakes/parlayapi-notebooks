@@ -27,6 +27,10 @@ Illustrative calculations are not current market observations.
 
 [Hamilton odds comparability dataflow](integrations/hamilton-comparability/README.md): run the existing fictional comparison rules as an explicit Python dataflow. Missing outcomes, ambiguous matches, different settlement rules and stale source timestamps remain visible in the result. No account or network access is needed.
 
+## Scope a client integration
+
+Use the [Sports Data Project Brief](https://parlayapi-project-brief.jgalperin98.chatgpt.site) to agree on required books and markets, model a polling workload, and export a private client scope with acceptance checks. It does not collect API keys or call the API. Requirements and workload assumptions are not proof of priced coverage or a subscription quote.
+
 ## Choose API access explicitly
 
 The configuration cell has three modes:
