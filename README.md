@@ -15,6 +15,8 @@ Illustrative calculations are not current market observations.
 
 ## Focused recipes
 
+[CSV identifier integrity](labs/csv-identifiers/README.md): preserve leading zeros and long IDs, distinguish missing observations from empty text, and run an offline example with literal expected output.
+
 [UFC method-of-victory coverage](labs/ufc-methods/README.md): a standard-library Python client that checks FanDuel, DraftKings and Novig in one private request. Start with the synthetic demo, then use your own key to see counts and observation ages. KO/TKO and KO/TKO/DQ stay distinct.
 
 [Experimental Dify coverage tool](integrations/dify-coverage/README.md): run a fictional example through the Dify SDK, then develop a private own-key coverage diagnostic. Local SDK tests only; Dify installation and Marketplace publication remain unverified.

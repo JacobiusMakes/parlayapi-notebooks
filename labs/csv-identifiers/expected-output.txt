@@ -1,0 +1,11 @@
+SYNTHETIC EXAMPLE : fictional IDs and records
+GOOD ID: '000123'
+GOOD ID: '9007199254740993'
+GOOD ID: '004200'
+GOOD observation 000123: None (unknown)
+GOOD observation 9007199254740993: '' (observed_empty)
+GOOD observation 004200: '0' (observed)
+BAD numeric import: '000123' -> '123'
+BAD float import: '9007199254740993' -> '9007199254740992'
+RAW CSV ambiguity: None and '' both write as ''
+STATE COLUMN: 'unknown' and 'observed_empty' remain distinct
