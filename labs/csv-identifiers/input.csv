@@ -1,0 +1,4 @@
+participant_id,label,observation,observation_state
+000123,Fictional Harbor Player,,unknown
+9007199254740993,Fictional Ridge Player,,observed_empty
+004200,Fictional Valley Player,0,observed
