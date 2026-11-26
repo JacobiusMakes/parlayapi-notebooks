@@ -1,0 +1,88 @@
+{
+  "format_version": 1,
+  "kind": "request_budget_assumptions",
+  "jobs": [
+    {
+      "job_id": "pregame-board",
+      "assumptions": {
+        "active_minutes": 7,
+        "interval_seconds": 300,
+        "sports": 2,
+        "requests_per_refresh": 3,
+        "active_windows": 8,
+        "retry_percent": 5,
+        "consumer_count": 2
+      },
+      "start_time_label": "18:00",
+      "polls_per_window": 2,
+      "base_requests": 96,
+      "additional_retry_requests": 5,
+      "planned_requests": 101,
+      "credits_per_request": "0.1",
+      "estimated_credits": "10.1",
+      "poll_markers": [
+        {
+          "offset_seconds": 0,
+          "day_offset": 0,
+          "clock_label": "18:00:00"
+        },
+        {
+          "offset_seconds": 300,
+          "day_offset": 0,
+          "clock_label": "18:05:00"
+        }
+      ],
+      "omitted_markers": 0,
+      "last_poll_offset_seconds": 300
+    },
+    {
+      "job_id": "event-detail",
+      "assumptions": {
+        "active_minutes": 10,
+        "interval_seconds": 300,
+        "sports": 1,
+        "requests_per_refresh": 1,
+        "active_windows": 8,
+        "retry_percent": 0,
+        "consumer_count": 1
+      },
+      "start_time_label": "23:55",
+      "polls_per_window": 2,
+      "base_requests": 16,
+      "additional_retry_requests": 0,
+      "planned_requests": 16,
+      "credits_per_request": null,
+      "estimated_credits": null,
+      "poll_markers": [
+        {
+          "offset_seconds": 0,
+          "day_offset": 0,
+          "clock_label": "23:55:00"
+        },
+        {
+          "offset_seconds": 300,
+          "day_offset": 1,
+          "clock_label": "00:00:00"
+        }
+      ],
+      "omitted_markers": 0,
+      "last_poll_offset_seconds": 300
+    }
+  ],
+  "planned_requests": 117,
+  "known_estimated_credit_subtotal": "10.1",
+  "total_estimated_credits": null,
+  "unpriced_job_ids": [
+    "event-detail"
+  ],
+  "boundary_rule": "Each nonempty window includes its initial poll and excludes its end.",
+  "window_rule": "active_windows counts complete repetitions, including windows crossing midnight.",
+  "sharing_rule": "Each row is one upstream job. consumer_count records its readers and does not multiply requests.",
+  "clock_rule": "Clock labels use a relative 24-hour day. They do not schedule calendar dates or timezone transitions.",
+  "sample_rule": "At most 12 poll markers per window; totals cover every modeled poll.",
+  "unit_cost_validation": "Entered assumptions only; verify exact request costs in current documentation.",
+  "actual_credit_usage": "not_observed",
+  "api_requests_made": 0,
+  "invented_fixture": true,
+  "input_source": "built_in_invented_example"
+}
