@@ -1,0 +1,56 @@
+{
+  "teaching_fixture": true,
+  "fixture_notice": "Invented local example. No feed observations or recipient acceptance.",
+  "format_version": 1,
+  "kind": "local_result_requirement_check",
+  "status": "does_not_match",
+  "scope": {
+    "sport": "example-league",
+    "event_id": "demo-event-1",
+    "bookmaker": "example-book",
+    "market": "moneyline"
+  },
+  "checks": [
+    {
+      "code": "event_id",
+      "state": "pass",
+      "expected": "demo-event-1",
+      "observed": "demo-event-1"
+    },
+    {
+      "code": "bookmaker",
+      "state": "pass",
+      "expected": "example-book",
+      "observed": "example-book"
+    },
+    {
+      "code": "market",
+      "state": "pass",
+      "expected": "moneyline",
+      "observed": "moneyline"
+    },
+    {
+      "code": "decimal_price",
+      "state": "pass",
+      "observed": 2
+    },
+    {
+      "code": "observation_time",
+      "state": "pass",
+      "observed": "2000-01-01T00:00:00.123456Z"
+    },
+    {
+      "code": "age_limit",
+      "state": "fail",
+      "expected": 60,
+      "observed": 60.000001
+    }
+  ],
+  "age_seconds": 60.000001,
+  "age_microseconds": "60000001",
+  "age_limit_requested": true,
+  "source_authenticity": "not_checked",
+  "live_coverage_verified": false,
+  "useful_task_acceptance": "not_observed",
+  "interpretation": "Checks apply only to the fields you entered. They do not authenticate a provider response, establish field timestamp semantics or prove delivery."
+}

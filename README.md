@@ -15,6 +15,8 @@ Illustrative calculations are not current market observations.
 
 ## Focused recipes
 
+[Plan and check a small API evaluation](labs/api-evaluation/README.md): a worked polling window, portable requirements brief and exact field-check examples, with free browser tools and JSON downloads. No key or live request is needed for the teaching exercise.
+
 [CSV identifier integrity](labs/csv-identifiers/README.md): preserve leading zeros and long IDs, distinguish missing observations from empty text, and run an offline example with literal expected output.
 
 [UFC method-of-victory coverage](labs/ufc-methods/README.md): a standard-library Python client that checks FanDuel, DraftKings and Novig in one private request. Start with the synthetic demo, then use your own key to see counts and observation ages. KO/TKO and KO/TKO/DQ stay distinct.
