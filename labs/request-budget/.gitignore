@@ -1,0 +1,2 @@
+# Publish only this generated teaching CSV. Other CSVs keep the root ignore rule.
+!example-jobs.csv
