@@ -1,0 +1,173 @@
+{
+  "profile": "tabular-data-package",
+  "name": "world-cup-scorelines",
+  "title": "Men's World Cup match scorelines, 2010–2026",
+  "version": "1.0.0",
+  "description": "360 matches from five tournaments, with separate regulation, cumulative extra-time and shoot-out scores.",
+  "sources": [
+    {
+      "title": "OpenFootball World Cup match records (CC0)",
+      "path": "https://github.com/openfootball/worldcup.json/tree/516d3825c3bd23fdc298c4014e84bde78f2d4965"
+    }
+  ],
+  "resources": [
+    {
+      "name": "matches",
+      "profile": "tabular-data-resource",
+      "path": "matches.csv",
+      "format": "csv",
+      "encoding": "utf-8",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "tournament",
+            "type": "integer",
+            "description": "Year of the tournament.",
+            "constraints": {
+              "required": true,
+              "enum": [
+                2010,
+                2014,
+                2018,
+                2022,
+                2026
+              ]
+            }
+          },
+          {
+            "name": "source_row",
+            "type": "integer",
+            "description": "One-based match position within the pinned tournament JSON file.",
+            "constraints": {
+              "required": true,
+              "minimum": 1
+            }
+          },
+          {
+            "name": "match_date",
+            "type": "date",
+            "description": "Calendar date recorded for the match by OpenFootball.",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "stage",
+            "type": "string",
+            "description": "Tournament stage, normalized across the five source files.",
+            "constraints": {
+              "required": true,
+              "enum": [
+                "Group",
+                "Round of 32",
+                "Round of 16",
+                "Quarter-final",
+                "Semi-final",
+                "Third place",
+                "Final"
+              ]
+            }
+          },
+          {
+            "name": "group_name",
+            "type": "string",
+            "description": "Group label from the source. Empty in knockout matches."
+          },
+          {
+            "name": "team1",
+            "type": "string",
+            "description": "First team in the original match record.",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "team2",
+            "type": "string",
+            "description": "Second team in the original match record.",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "regulation1",
+            "type": "integer",
+            "description": "Team 1 goals at the end of regulation, including stoppage time.",
+            "constraints": {
+              "required": true,
+              "minimum": 0
+            }
+          },
+          {
+            "name": "regulation2",
+            "type": "integer",
+            "description": "Team 2 goals at the end of regulation, including stoppage time.",
+            "constraints": {
+              "required": true,
+              "minimum": 0
+            }
+          },
+          {
+            "name": "extra_time1",
+            "type": "integer",
+            "description": "Team 1 cumulative goals at the end of extra time, including regulation. Empty when that phase was not played.",
+            "constraints": {
+              "minimum": 0
+            }
+          },
+          {
+            "name": "extra_time2",
+            "type": "integer",
+            "description": "Team 2 cumulative goals at the end of extra time, including regulation. Empty when that phase was not played.",
+            "constraints": {
+              "minimum": 0
+            }
+          },
+          {
+            "name": "shootout1",
+            "type": "integer",
+            "description": "Team 1 converted kicks in the separate penalty shoot-out. Empty when that phase was not played.",
+            "constraints": {
+              "minimum": 0
+            }
+          },
+          {
+            "name": "shootout2",
+            "type": "integer",
+            "description": "Team 2 converted kicks in the separate penalty shoot-out. Empty when that phase was not played.",
+            "constraints": {
+              "minimum": 0
+            }
+          },
+          {
+            "name": "decision",
+            "type": "string",
+            "description": "Phase that decided the match, or Draw for a tied group match.",
+            "constraints": {
+              "required": true,
+              "enum": [
+                "Regulation",
+                "Extra time",
+                "Shoot-out",
+                "Draw"
+              ]
+            }
+          },
+          {
+            "name": "winner",
+            "type": "string",
+            "description": "Winning team across the phases played. Empty for a group-stage draw."
+          }
+        ],
+        "primaryKey": [
+          "tournament",
+          "source_row"
+        ],
+        "missingValues": [
+          ""
+        ]
+      }
+    }
+  ]
+}
