@@ -29,6 +29,12 @@ WHERE tournament = 2022;
 
 `team1` and `team2` follow the order in the source. They imply no home-ground advantage. Regulation includes stoppage time. Extra-time columns hold the cumulative score at the end of extra time. Shoot-out columns contain converted kicks only. Empty extra-time or shoot-out fields mean that phase was not played in these records. Group-stage draws have an empty winner.
 
+## Try the report desk
+
+You're building a first-half results report. At the first deadline, a regulation score and another match's halftime score have arrived. Decide which fields you can publish, then advance the clock until the scorer and the book each confirm their part of the report. The lesson uses fictional records and includes an answer key.
+
+[Run the report exercise in your browser](https://notebook.basthon.fr/?lang=en&from=https://raw.githubusercontent.com/JacobiusMakes/parlayapi-notebooks/main/labs/world-cup-scorelines/report-desk.ipynb) or [open the Jupyter notebook](report-desk.ipynb).
+
 ## Find the original record
 
 The data come from [OpenFootball's World Cup JSON][upstream] under [CC0 1.0][license]. Each row retains the tournament and the one-based position of the match in its source file. The `sources` table contains the five pinned URLs and SHA-256 digests. All winner and decision fields are derived from the recorded scores.
