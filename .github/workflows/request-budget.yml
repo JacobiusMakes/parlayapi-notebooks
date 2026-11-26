@@ -1,0 +1,29 @@
+name: Offline request budget kit
+on:
+  push:
+    branches: [main]
+    paths: ['labs/request-budget/**', '.github/workflows/request-budget.yml']
+  pull_request:
+    paths: ['labs/request-budget/**', '.github/workflows/request-budget.yml']
+permissions:
+  contents: read
+concurrency:
+  group: request-budget-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  offline-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s labs/request-budget -p 'test_*.py' -v
+      - run: python labs/request-budget/build_notebook.py --check
