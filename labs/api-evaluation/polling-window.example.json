@@ -1,0 +1,28 @@
+{
+  "teaching_fixture": true,
+  "fixture_notice": "Invented local example. No feed observations or recipient acceptance.",
+  "format_version": 1,
+  "kind": "polling_timeline",
+  "active_seconds": 420,
+  "polls_per_active_day": 2,
+  "base_requests": 24,
+  "retry_allowance_requests": 2,
+  "total_planned_requests": 26,
+  "last_poll_seconds": 300,
+  "shown_poll_seconds": [
+    0,
+    300
+  ],
+  "omitted_poll_markers": 0,
+  "boundary_rule": "Initial poll at time zero for a nonempty window. The window end is excluded.",
+  "estimated_credits": null,
+  "interpretation": "This is schedule arithmetic on your assumptions, not a recommendation or a current metering or streaming guarantee.",
+  "assumptions": {
+    "active_minutes": 7,
+    "interval_seconds": 300,
+    "sports": 2,
+    "requests_per_refresh": 3,
+    "active_days": 2,
+    "retry_percent": 5
+  }
+}

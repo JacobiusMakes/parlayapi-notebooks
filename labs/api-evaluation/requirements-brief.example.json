@@ -1,0 +1,25 @@
+{
+  "teaching_fixture": true,
+  "fixture_notice": "Invented local example. No feed observations or recipient acceptance.",
+  "format_version": 1,
+  "kind": "api_evaluation_brief",
+  "created_at": "2000-01-01T00:00:00.000000Z",
+  "status": "requirements_only",
+  "intended_output": "An invented one-event comparison report",
+  "scope": {
+    "sport": "example-league",
+    "event_id": "demo-event-1",
+    "bookmaker": "example-book",
+    "market": "moneyline"
+  },
+  "acceptance_rule": "The reviewer can inspect the exact event, required bookmaker and market, a price, and its observation time.",
+  "source_authenticity": "not_checked",
+  "live_coverage_verified": false,
+  "useful_task_acceptance": "not_observed",
+  "next_checks": [
+    "Verify exact current scope and entitlement in the official documentation.",
+    "Inspect a source-returned observation privately.",
+    "Retain identity, price, observation time and cost evidence.",
+    "Have the intended recipient assess the required output."
+  ]
+}
