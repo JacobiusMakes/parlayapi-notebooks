@@ -14,6 +14,8 @@ The explorer loads SQLite in your browser. You can search, filter and run SQL wi
 | 2022 | 16 | 11 | 0 | 5 |
 | 2026 | 32 | 23 | 5 | 4 |
 
+For a report or class presentation, [download the editorial chart, caption and data credit](../../press/world-cup-knockout-results.md).
+
 ## Read one final
 
 Argentina and France were level **2-2 after regulation** in 2022. Their cumulative score after extra time was **3-3**. Argentina won the separate shoot-out **4-2**. To retrieve the three score pairs in team order, run this query in the browser's SQL editor or in a local SQLite client.
