@@ -15,6 +15,8 @@ Illustrative calculations are not current market observations.
 
 ## Focused recipes
 
+[Explore World Cup scores across five tournaments](labs/world-cup-scorelines/). Query 360 men's World Cup matches from 2010 through 2026 in your browser or download CSV and SQLite. Separate the regulation score, the cumulative score after extra time and the penalty shoot-out result.
+
 [Choose a next check after an API response](labs/response-triage/README.md): rehearse twelve invented authentication, access, rate-limit and transport cases with explicit attempt and wait budgets. The Python command makes no requests and keeps useful output unverified.
 
 [Find closing odds for one football match](labs/historical-match/README.md). Match a fixture by division, date and teams, then check all three closing outcomes. Start with the offline exercise or load a historical Premier League CSV from its publisher.
