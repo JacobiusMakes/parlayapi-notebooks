@@ -1,4 +1,5 @@
 """Render the editor graphic from the published SQLite snapshot. Requires Matplotlib."""
+import argparse
 from pathlib import Path
 import sqlite3
 
@@ -11,7 +12,32 @@ from matplotlib.ticker import PercentFormatter
 HERE = Path(__file__).resolve().parent
 
 
-def draw():
+COPY = {
+    "en": {
+        "title": "How World Cup knockout matches were decided",
+        "subtitle": "Each bar represents one tournament. The numbers inside are match counts.",
+        "phases": ["Regulation", "Extra time", "Penalty shoot-out"],
+        "matches": "matches",
+        "summary": "{after_90} of {total} matches went beyond regulation. {pens} ended in a shoot-out.",
+        "format": "Includes third-place matches. The 2026 knockout stage began with a round of 32.",
+        "credit": "Data from OpenFootball (CC0). Analysis and graphic by ParlayAPI.",
+        "filename": "world-cup-knockout-results.png",
+    },
+    "es": {
+        "title": "Cómo se decidieron las eliminatorias del Mundial",
+        "subtitle": "Cada barra representa un Mundial. Las cifras indican el número de partidos.",
+        "phases": ["Tiempo reglamentario", "Prórroga", "Tanda de penaltis"],
+        "matches": "partidos",
+        "summary": "{after_90} de {total} partidos llegaron a la prórroga. {pens} se decidieron en la tanda.",
+        "format": "Se incluye el partido por el tercer puesto. En 2026 hubo dieciseisavos de final.",
+        "credit": "Datos de OpenFootball (CC0). Análisis y gráfico de ParlayAPI.",
+        "filename": "eliminatorias-del-mundial.png",
+    },
+}
+
+
+def draw(language="en"):
+    copy = COPY[language]
     db = sqlite3.connect((HERE / "worldcup.db").as_uri() + "?mode=ro", uri=True)
     try:
         rows = db.execute("SELECT * FROM knockout_summary ORDER BY tournament").fetchall()
@@ -19,18 +45,17 @@ def draw():
         db.close()
     paper, ink, muted = "#f8f7f2", "#142c39", "#425864"
     colors = ["#28516c", "#a6c9c7", "#d9943a"]
-    title_labels = ["Regulation", "Extra time", "Penalty shoot-out"]
     fig, ax = plt.subplots(figsize=(11, 6.8))
     fig.patch.set_facecolor(paper)
     ax.set_facecolor(paper)
     fig.subplots_adjust(left=.22, right=.96, top=.71, bottom=.235)
-    fig.text(.045,.906,"How World Cup knockout matches were decided",fontsize=23,weight="bold",color=ink)
-    fig.text(.047,.852,"Each bar represents one tournament. The numbers inside are match counts.",fontsize=12,color=muted)
-    fig.legend([Patch(facecolor=c) for c in colors],title_labels,loc="upper left",
+    fig.text(.045,.906,copy["title"],fontsize=23,weight="bold",color=ink)
+    fig.text(.047,.852,copy["subtitle"],fontsize=12,color=muted)
+    fig.legend([Patch(facecolor=c) for c in colors],copy["phases"],loc="upper left",
                bbox_to_anchor=(.045,.815),frameon=False,ncol=3,handlelength=1.2,
                columnspacing=1.8,borderaxespad=0,fontsize=11,labelcolor=ink)
     for pos, (year, total, *counts) in enumerate(rows):
-        ax.text(-.032,pos,f"{year}   ·   {total} matches",transform=ax.get_yaxis_transform(),
+        ax.text(-.032,pos,f"{year}   ·   {total} {copy['matches']}",transform=ax.get_yaxis_transform(),
                 ha="right",va="center",fontsize=11,color=ink)
         left = 0
         for i, count in enumerate(counts):
@@ -52,16 +77,18 @@ def draw():
     total = sum(row[1] for row in rows)
     after_90 = sum(row[3] + row[4] for row in rows)
     pens = sum(row[4] for row in rows)
-    fig.text(.047,.132,f"{after_90} of {total} matches went beyond regulation. {pens} ended in a shoot-out.",
+    fig.text(.047,.132,copy["summary"].format(after_90=after_90, total=total, pens=pens),
              fontsize=13,weight="bold",color=ink)
-    fig.text(.047,.082,"Includes third-place matches. The 2026 knockout stage began with a round of 32.",
+    fig.text(.047,.082,copy["format"],
              fontsize=10,color=muted)
-    fig.text(.047,.042,"Data from OpenFootball (CC0). Analysis and graphic by ParlayAPI.",fontsize=9,color=muted)
-    target = HERE.parents[1] / "press" / "world-cup-knockout-results.png"
+    fig.text(.047,.042,copy["credit"],fontsize=9,color=muted)
+    target = HERE.parents[1] / "press" / copy["filename"]
     fig.savefig(target,dpi=180,facecolor=paper)
     plt.close(fig)
     return target
 
 
 if __name__ == "__main__":
-    print(draw())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--language", choices=COPY, default="en")
+    print(draw(parser.parse_args().language))

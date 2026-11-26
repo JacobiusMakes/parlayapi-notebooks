@@ -1,5 +1,7 @@
 # How World Cup knockout matches were decided
 
+[Leer en español](eliminatorias-del-mundial.md)
+
 Across the five men's World Cups from 2010 through 2026, 31 of 96 knockout matches were level after regulation. Twelve were decided in extra time, and 19 reached a penalty shoot-out.
 
 ![Stacked bars compare regulation, extra-time and shoot-out decisions. Half of the 16 knockout matches in 2014 went beyond regulation. In 2026, nine of 32 did.](world-cup-knockout-results.png)
