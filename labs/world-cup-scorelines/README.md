@@ -35,6 +35,12 @@ You're building a first-half results report. At the first deadline, a regulation
 
 [Try the three deadlines in your browser][desk] or [download the Jupyter notebook](report-desk.ipynb) to edit the records yourself.
 
+## Import a typed table
+
+Download the [Frictionless Data Package](https://github.com/JacobiusMakes/parlayapi-notebooks/releases/download/world-cup-scorelines-v1/world-cup-scorelines-datapackage.zip) and unzip it. The archive contains the match CSV and a [15-field schema](datapackage.json). The tournament and source row together identify one match. Goal counts are integers, match dates are dates, and empty cells represent missing values. A zero in a score column stays zero.
+
+With the Frictionless CLI installed, run `frictionless validate datapackage.json` inside the extracted folder to check the table offline.
+
 ## Find the original record
 
 The data come from [OpenFootball's World Cup JSON][upstream] under [CC0 1.0][license]. Each row retains the tournament and the one-based position of the match in its source file. The `sources` table contains the five pinned URLs and SHA-256 digests. All winner and decision fields are derived from the recorded scores.
