@@ -1,0 +1,31 @@
+name: Offline response triage
+on:
+  push:
+    branches: [main]
+    paths: ['labs/response-triage/**', '.github/workflows/response-triage.yml']
+  pull_request:
+    paths: ['labs/response-triage/**', '.github/workflows/response-triage.yml']
+permissions:
+  contents: read
+concurrency:
+  group: response-triage-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  offline-checks:
+    name: Python ${{ matrix.python }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {python: '3.9', os: ubuntu-22.04}
+          - {python: '3.13', os: ubuntu-latest}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s labs/response-triage -p 'test_*.py' -v

@@ -1,0 +1,125 @@
+[
+  {
+    "method": "GET",
+    "status": 429,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": "30"
+  },
+  {
+    "method": "GET",
+    "status": 429,
+    "received_at": "2026-01-01T00:00:00.000001Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": "Thu, 01 Jan 2026 00:00:30 GMT"
+  },
+  {
+    "method": "GET",
+    "status": 429,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": null
+  },
+  {
+    "method": "GET",
+    "status": 429,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": [
+      "30",
+      "60"
+    ]
+  },
+  {
+    "method": "GET",
+    "status": 429,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 2,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": "30"
+  },
+  {
+    "method": "GET",
+    "status": 429,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 10,
+    "read_only_confirmed": true,
+    "retry_after": "30"
+  },
+  {
+    "method": "POST",
+    "status": 429,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": "30"
+  },
+  {
+    "method": "GET",
+    "status": 401,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": null
+  },
+  {
+    "method": "GET",
+    "status": 403,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": null
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": null
+  },
+  {
+    "method": "GET",
+    "status": 503,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": "15"
+  },
+  {
+    "method": "GET",
+    "status": null,
+    "received_at": "2026-01-01T00:00:00Z",
+    "attempts_used": 1,
+    "attempt_limit": 2,
+    "wait_budget_seconds": 60,
+    "read_only_confirmed": true,
+    "retry_after": null
+  }
+]
