@@ -14,7 +14,7 @@ The explorer loads SQLite in your browser. You can search, filter and run SQL wi
 | 2022 | 16 | 11 | 0 | 5 |
 | 2026 | 32 | 23 | 5 | 4 |
 
-For a report or class presentation, [download the editorial chart, caption and data credit](../../press/world-cup-knockout-results.md).
+For a report or class presentation, [download the editorial chart, caption and data credit](../../press/world-cup-knockout-results.md). [Gráfico y datos en español](../../press/eliminatorias-del-mundial.md).
 
 ## Read one final
 
