@@ -46,7 +46,7 @@ The first job has two readers sharing one declared upstream job. Its seven-minut
 window has polls at zero and five minutes. The second starts at 23:55 and crosses
 midnight. Each full window counts once. Its unit cost is deliberately blank.
 '''),
-            cell('code', 'run-example', "example_jobs = parse_jobs_csv(EXAMPLE_CSV)\nreport = audit_jobs(example_jobs)\nreport['invented_fixture'] = True\nprint(format_table(report))\nassert report['planned_requests'] == 117\nassert report['total_estimated_credits'] is None\n"),
+            cell('code', 'run-example', "example_jobs = parse_jobs_csv(EXAMPLE_CSV)\nreport = audit_jobs(example_jobs)\nreport['invented_fixture'] = True\nreport['input_source'] = 'built_in_invented_example'\nprint(format_table(report))\nassert report['planned_requests'] == 117\nassert report['total_estimated_credits'] is None\n"),
             cell('code', 'clock-markers', "print(json.dumps(report['jobs'][1]['poll_markers'], indent=2))\n"),
             cell('markdown', 'entered-rate', '''## Try a second explicitly entered rate
 
@@ -74,6 +74,7 @@ empty and Colab output omission is requested; this is not access control.
     spec.loader.exec_module(model)
     report = model.audit_jobs(model.parse_jobs_csv(model.EXAMPLE_CSV))
     report['invented_fixture'] = True
+    report['input_source'] = 'built_in_invented_example'
     return {
         'request-budget.ipynb': json.dumps(notebook, indent=2, ensure_ascii=False) + '\n',
         'example-jobs.csv': model.EXAMPLE_CSV,

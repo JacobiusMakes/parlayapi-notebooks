@@ -136,6 +136,7 @@ class BudgetAuditTests(unittest.TestCase):
         r = json.loads(p.stdout)
         self.assertEqual(r['planned_requests'], 117)
         self.assertTrue(r['invented_fixture'])
+        self.assertEqual(r, json.loads((ROOT / 'example-report.json').read_text()))
 
     def test_cli_private_csv_and_exclusive_atomic_output(self):
         with tempfile.TemporaryDirectory() as folder:

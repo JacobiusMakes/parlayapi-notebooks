@@ -83,5 +83,6 @@
   "unit_cost_validation": "Entered assumptions only; verify exact request costs in current documentation.",
   "actual_credit_usage": "not_observed",
   "api_requests_made": 0,
-  "invented_fixture": true
+  "invented_fixture": true,
+  "input_source": "built_in_invented_example"
 }
