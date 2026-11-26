@@ -1,0 +1,193 @@
+{
+  "format_version": 1,
+  "kind": "first_response_rehearsal",
+  "invented_fixture": true,
+  "input_source": "built_in_invented_examples",
+  "cases": [
+    {
+      "case_number": 1,
+      "method": "GET",
+      "status": 429,
+      "decision": "review_one_read_retry_after_wait",
+      "next_check": "After the indicated wait, review one further read request, its scope and cost. This is a manual decision, not a retry loop or a guarantee of success.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "delay_seconds",
+        "minimum_wait_seconds": 30
+      },
+      "earliest_manual_review_at": "2026-01-01T00:00:30Z",
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 2,
+      "method": "GET",
+      "status": 429,
+      "decision": "review_one_read_retry_after_wait",
+      "next_check": "After the indicated wait, review one further read request, its scope and cost. This is a manual decision, not a retry loop or a guarantee of success.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "http_date",
+        "minimum_wait_seconds": 30
+      },
+      "earliest_manual_review_at": "2026-01-01T00:00:30.000001Z",
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 3,
+      "method": "GET",
+      "status": 429,
+      "decision": "review_wait_instruction",
+      "next_check": "No unambiguous supported wait instruction is available. Review the response and current documentation; do not invent a zero wait.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "missing",
+        "minimum_wait_seconds": null
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 4,
+      "method": "GET",
+      "status": 429,
+      "decision": "review_wait_instruction",
+      "next_check": "No unambiguous supported wait instruction is available. Review the response and current documentation; do not invent a zero wait.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "ambiguous",
+        "minimum_wait_seconds": null
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 5,
+      "method": "GET",
+      "status": 429,
+      "decision": "stop_attempt_budget",
+      "next_check": "The entered total attempt budget is exhausted. It includes the request already made.",
+      "attempts_remaining_under_entered_limit": 0,
+      "retry_timing": {
+        "state": "delay_seconds",
+        "minimum_wait_seconds": 30
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 6,
+      "method": "GET",
+      "status": 429,
+      "decision": "stop_wait_budget",
+      "next_check": "The minimum indicated wait exceeds the entered remaining wait budget. Do not shorten the wait to fit.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "delay_seconds",
+        "minimum_wait_seconds": 30
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 7,
+      "method": "POST",
+      "status": 429,
+      "decision": "stop_repeatability_unconfirmed",
+      "next_check": "This model only reviews explicitly confirmed read-only GET or HEAD requests.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "delay_seconds",
+        "minimum_wait_seconds": 30
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 8,
+      "method": "GET",
+      "status": 401,
+      "decision": "check_credentials",
+      "next_check": "Check the selected credential and authentication requirements privately before another request.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "missing",
+        "minimum_wait_seconds": null
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 9,
+      "method": "GET",
+      "status": 403,
+      "decision": "inspect_access_denial",
+      "next_check": "Inspect the reported denial and exact request access. This status alone does not identify an exhausted allowance or a required upgrade.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "missing",
+        "minimum_wait_seconds": null
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 10,
+      "method": "GET",
+      "status": 200,
+      "decision": "inspect_required_result",
+      "next_check": "Inspect the exact required record, fields and timestamps. HTTP success alone does not verify a useful result.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "missing",
+        "minimum_wait_seconds": null
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 11,
+      "method": "GET",
+      "status": 503,
+      "decision": "review_one_read_retry_after_wait",
+      "next_check": "After the indicated wait, review one further read request, its scope and cost. This is a manual decision, not a retry loop or a guarantee of success.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "delay_seconds",
+        "minimum_wait_seconds": 15
+      },
+      "earliest_manual_review_at": "2026-01-01T00:00:15Z",
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    },
+    {
+      "case_number": 12,
+      "method": "GET",
+      "status": null,
+      "decision": "stop_transport_unknown",
+      "next_check": "No HTTP status was recorded. Check the outcome before deciding whether to repeat anything.",
+      "attempts_remaining_under_entered_limit": 1,
+      "retry_timing": {
+        "state": "missing",
+        "minimum_wait_seconds": null
+      },
+      "earliest_manual_review_at": null,
+      "useful_output_verified": null,
+      "automatic_requests_made": 0
+    }
+  ],
+  "clock_assumption": "The entered received_at and HTTP-date use an accurate common UTC clock. Clock accuracy is not checked.",
+  "parser_scope": "Decimal delay-seconds up to 2**53-1, or canonical IMF-fixdate with a correct weekday. Obsolete HTTP-date formats are unrecognized in this teaching subset.",
+  "budget_scope": "The caller supplies attempts already used and remaining wait budget. This offline model does not track real attempts or enforce a shared account budget.",
+  "API_requests_made": 0,
+  "files_written": 0
+}

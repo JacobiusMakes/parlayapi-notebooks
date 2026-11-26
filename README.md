@@ -15,6 +15,8 @@ Illustrative calculations are not current market observations.
 
 ## Focused recipes
 
+[Choose a next check after an API response](labs/response-triage/README.md): rehearse twelve invented authentication, access, rate-limit and transport cases with explicit attempt and wait budgets. The Python command makes no requests and keeps useful output unverified.
+
 [Budget several API jobs](labs/request-budget/README.md): an offline CSV-to-JSON command and self-contained notebook for mixed request costs, unknown rates, shared readers and windows crossing midnight. Start with the invented example, then retain your own assumptions privately.
 
 [Plan and check a small API evaluation](labs/api-evaluation/README.md): a worked polling window, portable requirements brief and exact field-check examples, with free browser tools and JSON downloads. No key or live request is needed for the teaching exercise.
