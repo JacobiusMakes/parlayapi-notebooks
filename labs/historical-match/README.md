@@ -9,3 +9,5 @@ This notebook checks whether a single fixture has a complete set of closing home
 3. Compare the output to the three Bet365 closing columns in the source row. The report preserves missing prices and flags ambiguous matches. The notebook includes an answer key for the practice exercise.
 
 Football-Data.co.uk publishes the historical CSV and its column definitions. ParlayAPI provides the teaching code and fictional practice rows. [Season downloads](https://www.football-data.co.uk/englandm.php) · [Column definitions](https://www.football-data.co.uk/notes.txt)
+
+To evaluate a separate ParlayAPI project, record the fixture, market and fields you need in the [evaluation lab](https://parlay-api.com/tools/evaluation-lab?utm_source=github&utm_medium=workshop&utm_campaign=historical_match_classroom).
